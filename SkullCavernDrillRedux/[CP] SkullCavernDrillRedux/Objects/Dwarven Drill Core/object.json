@@ -1,0 +1,32 @@
+{
+  "Name": "Dwarven Drill Core",
+  "Description": "A complex mechanism of dwarven design",
+  "Price": 1,
+  "Category": "Crafting",
+  "Edibility": -300,
+  "EdibleIsDrink": false,
+  "EdibleBuffs": null,
+  "Recipe": {
+    "ResultCount": 10,
+    "Ingredients": [
+      {
+        "Object": "Battery Pack",
+        "Count": 2
+      },
+      {
+        "Object": "Quartz",
+        "Count": 2
+      },
+      {
+        "Object": "Stone",
+        "Count": 10
+      }
+    ],
+    "SkillUnlockName": "Mining",
+    "SkillUnlockLevel": 8
+  },
+  "CanPurchase": true,
+  "PurchaseFrom": "Dwarf",
+  "PurchasePrice": 200,
+  "PurchaseRequirements": null
+}

@@ -1,0 +1,22 @@
+{
+  "Name": "Dwarven Drill",
+  "Description": "A true marvel of dwarven engineering! This drill can be placed in the Skull Cavern to create shafts.",
+  "Price": 1,
+  "ProvidesLight": false,
+  "Recipe": {
+    "ResultCount": 1,
+    "Ingredients": [
+      {
+        "Object": "Drill Casing",
+        "Count": 1
+      },
+      {
+        "Object": "Dwarven Drill Core",
+        "Count": 1
+      }
+    ],
+    "SkillUnlockName": "Mining",
+    "SkillUnlockLevel": 8
+  },
+  "CanPurchase": false
+}
