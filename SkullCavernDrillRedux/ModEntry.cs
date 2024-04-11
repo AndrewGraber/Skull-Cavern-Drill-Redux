@@ -11,7 +11,7 @@ namespace SkullCavernDrillRedux
 {
     public interface IApi
     {
-        int GetBigCraftableId(string name);
+        string GetBigCraftableId(string name);
     }
     
     internal sealed class ModEntry : Mod
@@ -24,14 +24,14 @@ namespace SkullCavernDrillRedux
 
         private void OnSaveLoaded(object sender, SaveLoadedEventArgs e)
         {
-            ObjectPatches.Initialize(Helper, Monitor);
+            ObjectPatches.Initialize(this.Helper, this.Monitor);
         }
 
         internal class ObjectPatches
         {
             private static IApi api;
             private static IMonitor Monitor;
-            private static int MyCraftableID = -1;
+            private static string MyCraftableIDString = "";
 
             //Create the patch inside this class, rather than in ModEntry
             public static void ApplyPatch(string modId)
@@ -52,7 +52,7 @@ namespace SkullCavernDrillRedux
 
                 if(api != null)
                 {
-                    MyCraftableID = api.GetBigCraftableId("Dwarven Drill");
+                    MyCraftableIDString = api.GetBigCraftableId("Dwarven Drill");
                 }
             }
 
@@ -61,7 +61,7 @@ namespace SkullCavernDrillRedux
                 try
                 {
                     //Checks if you're holding the drill, and if you're in the Skull Cavern
-                    if((__instance.bigCraftable.Value && __instance.ParentSheetIndex == MyCraftableID) && (location is MineShaft shaft && Game1.CurrentMineLevel > 120))
+                    if((__instance.bigCraftable.Value && (__instance.QualifiedItemId == MyCraftableIDString || __instance.QualifiedItemId == "(BC)" + MyCraftableIDString)) && (location is MineShaft shaft && Game1.CurrentMineLevel > 120))
                     {
                         //Convert from pixel coordinates to tile coordinates
                         shaft.createLadderDown((x / 64), (y / 64), true);
